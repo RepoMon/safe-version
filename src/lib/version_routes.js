@@ -17,11 +17,13 @@ module.exports = (function() {
      */
     routes.get('/:vendor/:library/:version', function(req, res){
 
-        var vendor = req.param('vendor'), library = req.param('library'), version = req.param('version');
+        var vendor = req.param('vendor'),
+            library = req.param('library'),
+            version = req.param('version');
 
         logger.info("getting safe version for - vendor: " + vendor + ' library: ' + library + ' version: ' + version);
 
-        var lib = store.get(vendor, library, function(lib, err){
+        store.get(vendor, library, function(lib, err){
 
             if (!err) {
 
